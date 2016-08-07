@@ -79,7 +79,7 @@ struct PP<T *>{
         T *a = *ap;
         if(!a){
             const char *cpp_hates_compound_literals = "<nil>";
-            return PP<char*>::pusnprint(b, l, &cpp_hates_compound_literals);
+            return PP<const char*>::pusnprint(b, l, &cpp_hates_compound_literals);
         }
         return pusnprintf(b, l, "%:&%", (void  *) a, *a);
     }
