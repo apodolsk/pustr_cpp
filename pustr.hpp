@@ -11,15 +11,13 @@ struct pu_arg{
     const void *val;
     size_t (*pusnprint)(char *b, size_t l, const void *a);
 
+    using pptype = size_t (*)(char *, size_t, const void *);
+
     template <typename T>
     pu_arg(const T &val) :
         val(&val),
-        pusnprint(&PP<T>::pusnprint)
+        pusnprint((pptype) &PP<T>::pusnprint)
         {}
-    /*     using pptype = size_t (*)(char *, size_t, const void *); */
-    /*     return (pu_arg){&val, (pptype) &PP<T>::pusnprint}; */
-    /* } */
-
 };
 
 size_t _pusnprintf(char *b, size_t max, const char *fmt, const pu_arg *args);

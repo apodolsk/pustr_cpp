@@ -1,3 +1,5 @@
+#include <pustr.hpp>
+
 size_t _pusnprintf(char *b, size_t max, const char *fmt, const pu_arg *args){
     size_t l = 0;
     for(const char *c = fmt; *c != '\0'; c++){
